@@ -1,0 +1,215 @@
+/* App.css */
+:root {
+  color-scheme: light dark;
+  --green: #00B755;
+  --yellow: #daaf38;
+  --red: #ca4754;
+  --black: #222;
+  --gray: #999;
+}
+
+body {
+  background: var(--black);
+  font-family: Menlo, monospace;
+  display: grid;
+  justify-content: center;
+  margin-top: 32px;
+  padding: 16px;
+}
+
+main {
+  max-width: 90%;
+}
+
+section {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 800px;
+}
+
+time {
+  color: var(--yellow);
+}
+
+/* Oculta el input (igual que en la versión original) */
+input {
+  z-index: -999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 8px;
+  margin: 0;
+}
+
+/* Estilos para las letras */
+.letter {
+  color: var(--gray);
+  position: relative;
+}
+
+.letter.active::before {
+  content: '|';
+  color: var(--yellow);
+  font-size: 14px;
+  position: absolute;
+  left: -65%;
+  animation: blink 1s infinite ease-in-out;
+}
+
+.letter.correct {
+  color: var(--green);
+}
+
+.letter.incorrect {
+  color: var(--red);
+}
+
+.letter.active.is-last::before {
+  left: 65%;
+}
+
+/* Estilos para las palabras */
+.word {
+  border-bottom: 1.5px solid transparent;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.word.marked {
+  border-color: var(--red);
+}
+
+@keyframes blink {
+  0%, 25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+}
+
+#game {
+  display: flex;
+}
+
+
+h2 {
+  font-weight: 400;
+  opacity: 0.4;
+  margin: 0;
+  font-size: 16px;
+}
+
+h4 {
+  font-size: xx-large;
+  text-align: center;
+  color: var(--yellow);
+  text-shadow: 1px 1px var(--gray);
+  margin: 0;
+}
+
+h3 {
+  font-weight: 400;
+  margin: 0;
+  font-size: 24px;
+  color: var(--yellow);
+}
+
+button {
+  background: transparent;
+  border: 0;
+  margin-top: 32px;
+  padding: 8px;
+  opacity: 0.4;
+  display: inline-block;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+button:hover {
+  background: #444;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+#init-button {
+  background: transparent;
+  border: 0;
+  opacity: 0.4;
+  display: inline-block;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+#init-button:hover {
+  background: #444;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+#options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  padding: 15px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+/* App.css */
+
+.panels {
+  display: flex;
+  gap: 16px;
+}
+
+/* Panel de inglés (interactivo) */
+#english-panel {
+  flex: 1;
+  width: 80%;
+}
+
+
+
+/* Panel de español (traducción) */
+#spanish-panel {
+  flex: 1;
+  width: 80%;
+  background: #333;
+  padding: 8px;
+  border-radius: 4px;
+  min-height: 100px;
+  color: var(--yellow);
+}
+
+#english-panel,
+#spanish-panel {
+  flex: 1;
+  min-height: 300px; /* Ajusta según lo que necesites */
+}
+
+/* Puedes agregar más estilos para .spanish-word, por ejemplo */
+.word.spanish-word {
+  margin-right: 4px;
+  font-size: 1.2em;
+}
+
+
+.word.spanish-word.error {
+  color: var(--red);
+}
